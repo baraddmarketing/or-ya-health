@@ -18,7 +18,7 @@ export function Section({
   const bgColors = {
     default: "bg-transparent",
     alt: "bg-white/50 backdrop-blur-sm",
-    primary: "bg-primary/10",
+    primary: "bg-primary text-primary-foreground",
   };
 
   return (

@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
+import { ContactForm } from "@/components/ContactForm";
 import { ArrowLeft, Heart, Leaf, Phone, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -24,37 +25,18 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
-      {/* Navigation / Header */}
-      <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
-        <div className="container flex items-center justify-between h-20">
-          <div className="flex items-center gap-3">
-            <Image src="/logo.png" alt="Or-yah Levi Logo" width={48} height={48} className="h-12 w-auto" />
-            <span className="font-serif text-xl font-bold text-primary hidden md:block">אור-יה לוי</span>
-          </div>
-          <nav className="hidden md:flex items-center gap-8 font-medium text-foreground/80">
-            <a href="#about" className="hover:text-primary transition-colors">אודות</a>
-            <a href="#services" className="hover:text-primary transition-colors">ליווי אישי</a>
-            <a href="#testimonials" className="hover:text-primary transition-colors">עדויות</a>
-            <a href="#contact" className="hover:text-primary transition-colors">צור קשר</a>
-          </nav>
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6">
-            שיחת ייעוץ חינם
-          </Button>
-        </div>
-      </header>
-
-      <main className="pt-20">
+      <main>
         {/* HERO SECTION */}
         <Section className="min-h-[90vh] flex items-center relative overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <Image 
-              src="/images/hero-earth-roots.png" 
-              alt="Meditation and Healing" 
+            <Image
+              src="/images/hero-earth-roots.png"
+              alt="Meditation and Healing"
               fill
-              className="object-cover opacity-90"
+              className="object-cover opacity-90 scale-x-[-1]"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-l from-background/90 via-background/40 to-transparent" />
           </div>
           
           <div className="container relative z-10 grid md:grid-cols-2 gap-12 items-center">
@@ -64,21 +46,66 @@ export default function Home() {
               variants={staggerContainer}
               className="space-y-6 max-w-2xl"
             >
-              <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-bold text-primary leading-tight">
+              <motion.h1 variants={fadeIn} className="font-bold text-primary leading-tight">
                 אור-יה לוי
               </motion.h1>
-              <motion.h2 variants={fadeIn} className="text-2xl md:text-3xl font-serif text-foreground/80 leading-relaxed">
+              <motion.h2 variants={fadeIn} className="font-serif text-foreground leading-relaxed text-[2rem]">
                 פיזיותרפיסטית שיקומית ומלווה בתהליכי החלמה בגוף ~ נפש ~ רוח ~ נשמה
               </motion.h2>
-              <motion.p variants={fadeIn} className="text-xl text-muted-foreground border-r-4 border-primary pr-4">
+              <motion.p variants={fadeIn} className="text-muted-foreground border-r-4 border-primary pr-4">
                 החלמה מכאבים כרוניים, חרדות ותסמיני פוסט טראומה
               </motion.p>
               <motion.div variants={fadeIn} className="pt-4">
-                <Button size="lg" className="text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                <Button size="lg" className="px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
                   התחילי את המסע שלך
                 </Button>
               </motion.div>
             </motion.div>
+          </div>
+
+          {/* Paper texture wave at bottom */}
+          <div className="absolute bottom-0 left-0 w-full h-[60px] z-20" style={{ clipPath: 'polygon(0% 60%, 5% 40%, 10% 55%, 15% 35%, 20% 50%, 25% 30%, 30% 45%, 35% 25%, 40% 40%, 45% 20%, 50% 35%, 55% 15%, 60% 30%, 65% 10%, 70% 25%, 75% 5%, 80% 20%, 85% 0%, 90% 15%, 95% 5%, 100% 10%, 100% 100%, 0% 100%)' }}>
+            <Image
+              src="/images/texture-paper-clay.png"
+              alt=""
+              fill
+              className="object-cover"
+            />
+          </div>
+        </Section>
+
+        {/* ABOUT SECTION */}
+        <Section id="about" className="overflow-hidden">
+          <div className="container grid md:grid-cols-2 gap-16 items-center">
+            <div className="relative h-[500px] w-full">
+              <div className="absolute -inset-4 bg-primary/20 rounded-full blur-3xl opacity-50" />
+              <Image
+                src="/images/hands-healing-warm.png"
+                alt="Healing Hands"
+                fill
+                className="relative rounded-2xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 object-cover"
+              />
+            </div>
+
+            <div className="space-y-8">
+              <h2 className="font-bold text-primary">נעים להכיר, אני אור-יה</h2>
+              <div className="space-y-6 leading-relaxed text-black">
+                <p>
+                  אני אור-יה, פיזיותרפיסטית שיקומית, מורה ליוגה, רקדנית ותלמידה של תורת הסוד והקבלה.
+                </p>
+                <p>
+                  אני יוצרת ומלווה מסעות החלמה המשלבים גוף, נפש, רוח ונשמה לאנשים ונשים הסובלים מכאבים כרוניים, חרדות ותסמיני טראומה.
+                </p>
+                <p>
+                  מתוך סיפור ההחלמה שלי ומתוך שנים של פיזיותרפיה שיקומית, פיתחתי שיטות לתהליכי ריפוי בתחומי הגוף והנפש.
+                </p>
+              </div>
+
+              <div className="notebook-quote">
+                <div className="margin-line" />
+                <p>&quot;עבודתי נועדה להזכיר לכל אדם את היכולת הפנימית שלו להשתנות, להתאזן וליצור חיים מחודשים מבפנים.&quot;</p>
+              </div>
+            </div>
           </div>
         </Section>
 
@@ -91,7 +118,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="max-w-4xl mx-auto"
             >
-              <h2 className="text-4xl font-bold text-primary mb-12">בריאה - HEALTH IS CREATION</h2>
+              <h2 className="font-bold text-primary mb-12">בריאה - HEALTH IS CREATION</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
@@ -104,7 +131,7 @@ export default function Home() {
                       <div className="p-4 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                         {item.icon}
                       </div>
-                      <h3 className="text-xl font-serif font-bold">{item.title}</h3>
+                      <h3 className="font-serif font-bold">{item.title}</h3>
                     </CardContent>
                   </Card>
                 ))}
@@ -119,63 +146,29 @@ export default function Home() {
           </div>
         </Section>
 
-        {/* ABOUT SECTION */}
-        <Section id="about" className="overflow-hidden">
-          <div className="container grid md:grid-cols-2 gap-16 items-center">
-            <div className="relative h-[500px] w-full">
-              <div className="absolute -inset-4 bg-primary/20 rounded-full blur-3xl opacity-50" />
-              <Image 
-                src="/images/hands-healing-warm.png" 
-                alt="Healing Hands" 
-                fill
-                className="relative rounded-2xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 object-cover"
-              />
-            </div>
-            
-            <div className="space-y-8">
-              <h2 className="text-4xl font-bold text-primary">נעים להכיר, אני אור-יה</h2>
-              <div className="space-y-6 text-lg leading-relaxed text-foreground/90">
-                <p>
-                  אני אור-יה, פיזיותרפיסטית שיקומית, מורה ליוגה, רקדנית ותלמידה של תורת הסוד והקבלה.
-                </p>
-                <p>
-                  אני יוצרת ומלווה מסעות החלמה המשלבים גוף, נפש, רוח ונשמה לאנשים ונשים הסובלים מכאבים כרוניים, חרדות ותסמיני טראומה.
-                </p>
-                <p>
-                  מתוך סיפור ההחלמה שלי ומתוך שנים של פיזיותרפיה שיקומית, פיתחתי שיטות לתהליכי ריפוי בתחומי הגוף והנפש.
-                </p>
-              </div>
-              
-              <blockquote className="bg-primary/5 p-8 rounded-r-xl border-r-4 border-primary italic text-xl font-serif text-primary-foreground/90 bg-primary">
-                &quot;עבודתי נועדה להזכיר לכל אדם את היכולת הפנימית שלו להשתנות, להתאזן וליצור חיים מחודשים מבפנים.&quot;
-              </blockquote>
-            </div>
-          </div>
-        </Section>
-
         {/* PRIMARY SERVICE */}
         <Section id="services" variant="primary" tornTop tornBottom>
           <div className="container">
             <div className="max-w-3xl mx-auto text-center mb-16">
-              <h2 className="text-4xl font-bold mb-6">ליווי אישי</h2>
-              <p className="text-xl text-muted-foreground">
+              <h2 className="font-bold mb-6">ליווי אישי</h2>
+              <p className="">
                 מתמודד\ת עם כאבים כרוניים במשך חודשים עד שנים?
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-8">
-                <div className="bg-background p-8 rounded-2xl shadow-sm">
-                  <p className="text-lg leading-relaxed mb-6">
+                <div className="px-8 border-r-4 border-white/50">
+                  <p className="leading-relaxed mb-6">
                     אם שמעת את המשפטים &quot;אין לך כלום&quot;, &quot;זה רק בראש שלך&quot;, &quot;אין לזה תרופה&quot;, או &quot;לעולם לא תחלימי - תלמדי לחיות עם זה&quot; - אני רוצה להחזיר לך את התקווה והאמונה.
                   </p>
-                  <p className="text-xl font-bold text-primary">
+                  <p className="font-bold text-white">
                     זה לא בראש שלך, הכאב הוא אמיתי, ויש לך אפשרות להחלים ממנו.
                   </p>
                 </div>
-                
+
                 <div className="flex flex-col gap-4">
-                  <h3 className="text-xl font-bold">אנחנו מטפלים ב:</h3>
+                  <h3 className="font-bold">אנחנו מטפלים ב:</h3>
                   <div className="flex flex-wrap gap-2">
                     {["פיברומיאלגיה", "כאבים כרוניים", "תסמיני פוסט טראומה", "כאבי גב", "כאבי אגן"].map((tag) => (
                       <span key={tag} className="px-4 py-2 bg-white rounded-lg shadow-sm border border-primary/20 text-primary font-medium">
@@ -185,10 +178,10 @@ export default function Home() {
                   </div>
                 </div>
 
-                <Button size="lg" className="w-full md:w-auto text-lg px-8 py-6 rounded-full">
+                <Button size="lg" className="w-full md:w-auto px-8 py-6 rounded-full bg-white text-primary hover:bg-white/90">
                   לשיחת ייעוץ חינם לחצי פה
                 </Button>
-                <p className="text-sm text-muted-foreground">
+                <p className="">
                   בשיחת ייעוץ תוכלי לספר לי בדיוק עם מה את מתמודדת ונמצא את המסגרת המתאימה ביותר עבורך.
                 </p>
               </div>
@@ -201,7 +194,7 @@ export default function Home() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-8">
-                  <p className="text-white text-2xl font-serif font-bold">
+                  <p className="text-white font-serif font-bold">
                     &quot;הם לא גזרת גורל לנצח ואפשר להחלים מהם!&quot;
                   </p>
                 </div>
@@ -213,7 +206,7 @@ export default function Home() {
         {/* TESTIMONIALS */}
         <Section id="testimonials" className="bg-[url('/images/texture-paper-clay.png')]">
           <div className="container">
-            <h2 className="text-4xl font-bold text-center mb-16 text-primary">עדויות ומילים חמות</h2>
+            <h2 className="font-bold text-center mb-16 text-primary">עדויות ומילים חמות</h2>
             
             <div className="grid md:grid-cols-3 gap-8">
               {[
@@ -242,7 +235,7 @@ export default function Home() {
                       <Star className="w-6 h-6 inline-block fill-current" />
                       <Star className="w-6 h-6 inline-block fill-current" />
                     </div>
-                    <h3 className="text-xl font-bold mb-4">{t.title}</h3>
+                    <h3 className="font-bold mb-4">{t.title}</h3>
                     <p className="text-muted-foreground leading-relaxed flex-grow mb-6">&quot;{t.text}&quot;</p>
                     <div className="font-bold text-primary border-t border-primary/10 pt-4">
                       {t.name}
@@ -261,41 +254,25 @@ export default function Home() {
               <div className="grid md:grid-cols-2">
                 <div className="bg-primary p-12 text-primary-foreground flex flex-col justify-between">
                   <div>
-                    <h2 className="text-3xl font-bold mb-6">בואי נדבר</h2>
-                    <p className="text-lg opacity-90 mb-8">
+                    <h2 className="font-bold mb-6">בואי נדבר</h2>
+                    <p className="opacity-90 mb-8">
                       השאירי פרטים ואחזור אליך לשיחת ייעוץ חינם בהקדם.
                     </p>
                   </div>
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
                       <Phone className="w-5 h-5" />
-                      <span>050-1234567</span>
+                      <span>{process.env.NEXT_PUBLIC_PHONE}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <ArrowLeft className="w-5 h-5" />
-                      <span>oryah@example.com</span>
+                      <span>{process.env.NEXT_PUBLIC_CONTACT_EMAIL}</span>
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="p-12 bg-white">
-                  <form className="space-y-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">שם מלא</label>
-                      <input type="text" className="w-full p-3 rounded-lg border bg-background focus:ring-2 ring-primary/20 outline-none" />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">טלפון</label>
-                      <input type="tel" className="w-full p-3 rounded-lg border bg-background focus:ring-2 ring-primary/20 outline-none" />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">אימייל</label>
-                      <input type="email" className="w-full p-3 rounded-lg border bg-background focus:ring-2 ring-primary/20 outline-none" />
-                    </div>
-                    <Button className="w-full py-6 text-lg rounded-lg mt-4">
-                      שלחי פרטים
-                    </Button>
-                  </form>
+                  <ContactForm />
                 </div>
               </div>
             </Card>
@@ -305,7 +282,7 @@ export default function Home() {
         {/* SECONDARY SERVICES */}
         <Section className="bg-muted/30">
           <div className="container">
-            <h2 className="text-3xl font-bold text-center mb-12">דרכים נוספות שבהן אני עובדת</h2>
+            <h2 className="font-bold text-center mb-12">דרכים נוספות שבהן אני עובדת</h2>
             
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <Card className="hover:shadow-lg transition-shadow cursor-pointer">
@@ -314,7 +291,7 @@ export default function Home() {
                     <Leaf className="w-8 h-8" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">ליווי למוסדות שיקומיים</h3>
+                    <h3 className="font-bold mb-2">ליווי למוסדות שיקומיים</h3>
                     <p className="text-muted-foreground mb-4">
                       שיטה שרואה את המוסד בצורה הוליסטית ומייצרת שיפור ותהליכי עומק לדיירים.
                     </p>
@@ -331,7 +308,7 @@ export default function Home() {
                     <Heart className="w-8 h-8" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">JAMPA Israel - כלים מרפאים</h3>
+                    <h3 className="font-bold mb-2">JAMPA Israel - כלים מרפאים</h3>
                     <p className="text-muted-foreground mb-4">
                       שמנים אתריים, קטורות וריחות שמעוררים את הנשמה.
                     </p>
@@ -349,12 +326,12 @@ export default function Home() {
         <footer className="bg-primary text-primary-foreground py-24 text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 bg-[url('/images/roots-illustration.png')] bg-cover bg-center mix-blend-overlay" />
           <div className="container relative z-10 max-w-3xl mx-auto px-6">
-            <blockquote className="text-2xl md:text-4xl font-serif font-bold leading-relaxed mb-12">
+            <blockquote className="font-serif font-bold leading-relaxed mb-12">
               &quot;וּבְרֶגַע שֶׁהָאָדָם זוֹכֵר אֶת אוֹרוֹ – הַדֶּרֶךְ נִפְתַּחַת לְפָנָיו כְּאִלּוּ מֵעוֹלָם חִכְּתָה לוֹ.&quot;
             </blockquote>
-            <div className="flex justify-center gap-8 opacity-80 text-sm">
-              <a href="#" className="hover:opacity-100">מדיניות פרטיות</a>
-              <a href="#" className="hover:opacity-100">הצהרת נגישות</a>
+            <div className="flex justify-center gap-8">
+              <a href="#" className="hover:underline">מדיניות פרטיות</a>
+              <a href="#" className="hover:underline">הצהרת נגישות</a>
               <span>© 2025 אור-יה לוי</span>
             </div>
           </div>

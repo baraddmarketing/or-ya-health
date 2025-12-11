@@ -4,81 +4,187 @@
 
 @layer base {
   :root {
-    /* Earth & Roots Palette - Converted to HSL for Tailwind */
-    /* Terracotta/Clay Primary */
-    --primary: 14 45% 45%;
-    --primary-foreground: 30 20% 98%;
-    
-    /* Olive/Sage Secondary */
-    --secondary: 80 20% 90%;
-    --secondary-foreground: 80 30% 20%;
-    
-    /* Warm Beige Background */
+    /* Base colors */
     --background: 35 30% 96%;
-    --foreground: 25 15% 25%; /* Deep Charcoal/Brown */
-    
-    /* Card - Slightly lighter beige/paper */
+    --foreground: 25 15% 25%;
     --card: 35 30% 98%;
     --card-foreground: 25 15% 25%;
-    
-    --popover: 35 30% 98%;
-    --popover-foreground: 25 15% 25%;
-    
+
+    /* Brand colors */
+    --primary: 14 45% 45%;
+    --primary-foreground: 30 20% 98%;
+    --secondary: 80 20% 90%;
+    --secondary-foreground: 80 30% 20%;
+
+    /* Utility colors */
     --muted: 35 20% 92%;
-    --muted-foreground: 25 10% 45%;
-    
-    --accent: 35 20% 90%;
-    --accent-foreground: 25 15% 25%;
-    
+    --muted-foreground: 0 0% 10%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-    
+
+    /* UI elements */
     --border: 35 20% 85%;
     --input: 35 20% 85%;
     --ring: 14 45% 45%;
-    
     --radius: 0.5rem;
+
+    /* Pure colors for overlays */
+    --white: 0 0% 100%;
+    --black: 0 0% 0%;
   }
 
   .dark {
     --background: 25 15% 15%;
     --foreground: 35 30% 96%;
-    
     --card: 25 15% 20%;
     --card-foreground: 35 30% 96%;
-    
-    --popover: 25 15% 20%;
-    --popover-foreground: 35 30% 96%;
-    
     --primary: 14 45% 55%;
     --primary-foreground: 30 20% 98%;
-    
     --secondary: 80 20% 20%;
     --secondary-foreground: 80 30% 90%;
-    
     --muted: 25 15% 25%;
     --muted-foreground: 35 20% 70%;
-    
-    --accent: 25 15% 25%;
-    --accent-foreground: 35 30% 96%;
-    
     --destructive: 0 62% 30%;
     --destructive-foreground: 210 40% 98%;
-    
     --border: 25 15% 25%;
     --input: 25 15% 25%;
     --ring: 14 45% 55%;
+    --white: 0 0% 100%;
+    --black: 0 0% 0%;
   }
+}
+
+/* Custom Fonts */
+@font-face {
+  font-family: 'Drugulin';
+  src: url('/fonts/drugulinclm-bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Drugulin';
+  src: url('/fonts/drugulinclm-bolditalic-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  src: url('/fonts/FrankRuhlLibre-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  src: url('/fonts/FrankRuhlLibre-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  src: url('/fonts/FrankRuhlLibre-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  src: url('/fonts/FrankRuhlLibre-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  src: url('/fonts/FrankRuhlLibre-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  src: url('/fonts/FrankRuhlLibre-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  src: url('/fonts/FrankRuhlLibre-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
   body {
-    @apply bg-background text-foreground;
-    /* Fallback background color if image fails to load */
     background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Frank Ruhl Libre', serif;
+  }
+
+  /* Typography - Consistent sizing */
+  p {
+    @apply text-base md:text-lg;
+  }
+
+  /* Navigation links use body text sizing */
+  nav a {
+    @apply text-base md:text-lg;
+  }
+
+  /* Form labels use body text sizing */
+  label {
+    @apply text-base md:text-lg;
+  }
+
+  /* Blockquotes */
+  blockquote {
+    @apply text-[1.5rem];
+  }
+
+  /* Apply Drugulin to all headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Drugulin', serif;
+    font-weight: 700;
+  }
+
+  h1 {
+    @apply text-6xl md:text-8xl;
+  }
+
+  h2 {
+    @apply text-5xl;
+  }
+
+  h3 {
+    @apply text-3xl;
+  }
+
+  h4 {
+    @apply text-2xl;
+  }
+
+  h5 {
+    @apply text-xl;
+  }
+
+  h6 {
+    @apply text-lg;
   }
 }
 
@@ -103,9 +209,78 @@ body::before {
     clip-path: polygon(0% 10px, 5% 0px, 10% 12px, 15% 2px, 20% 10px, 25% 0px, 30% 12px, 35% 2px, 40% 10px, 45% 0px, 50% 12px, 55% 2px, 60% 10px, 65% 0px, 70% 12px, 75% 2px, 80% 10px, 85% 0px, 90% 12px, 95% 2px, 100% 10px, 100% 100%, 0% 100%);
     margin-top: -10px;
   }
-  
+
   .torn-edge-bottom {
     clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 10px), 95% 100%, 90% calc(100% - 12px), 85% 100%, 80% calc(100% - 10px), 75% 100%, 70% calc(100% - 12px), 65% 100%, 60% calc(100% - 10px), 55% 100%, 50% calc(100% - 12px), 45% 100%, 40% calc(100% - 10px), 35% 100%, 30% calc(100% - 12px), 25% 100%, 20% calc(100% - 10px), 15% 100%, 10% calc(100% - 12px), 5% 100%, 0% calc(100% - 10px));
     padding-bottom: 20px;
+  }
+
+  /* Notebook-style blockquote */
+  .notebook-quote {
+    position: relative;
+    box-sizing: border-box;
+    max-width: 100%;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.125rem;
+    line-height: 1.8rem;
+    border-radius: 10px;
+    background: #fff;
+    background-image: linear-gradient(hsl(var(--background)) 1.7rem, hsl(var(--border)) 1.8rem);
+    background-size: 100% 1.8rem;
+    padding: 2rem 1.5rem 2rem 4rem;
+  }
+
+  [dir="rtl"] .notebook-quote {
+    padding: 2rem 4rem 2rem 1.5rem;
+  }
+
+  .notebook-quote::before,
+  .notebook-quote::after {
+    position: absolute;
+    content: "";
+    bottom: 10px;
+    width: 40%;
+    height: 10px;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.4);
+    z-index: -1;
+    transition: all 0.3s ease;
+  }
+
+  .notebook-quote::before {
+    left: 15px;
+    transform: skew(-5deg) rotate(-5deg);
+  }
+
+  .notebook-quote::after {
+    right: 15px;
+    transform: skew(5deg) rotate(5deg);
+  }
+
+  .notebook-quote:hover::before,
+  .notebook-quote:hover::after {
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.2);
+  }
+
+  .notebook-quote .margin-line {
+    position: absolute;
+    border-left: 2px solid hsl(var(--primary));
+    height: 100%;
+    left: 3rem;
+    top: 0;
+    border-radius: 10px 0 0 10px;
+  }
+
+  [dir="rtl"] .notebook-quote .margin-line {
+    left: auto;
+    right: 3rem;
+    border-left: none;
+    border-right: 2px solid hsl(var(--primary));
+    border-radius: 0 10px 10px 0;
+  }
+
+  .notebook-quote p {
+    margin: 0;
+    color: hsl(var(--foreground));
+    font-style: italic;
   }
 }
